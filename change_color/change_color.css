@@ -1,0 +1,22 @@
+p {font-family: Verdana, Geneva, Tahome, sans-serif;}
+
+.textBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    text-align: center;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 0%;
+    font-size: 100%;
+}
+
+.textBtn:focus {outline:none;}
+
+.c {display: inline;}
+
+.cb {
+    display: inline;
+    color: white;
+}

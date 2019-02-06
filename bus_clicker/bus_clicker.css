@@ -1,0 +1,30 @@
+body {background-color: black;}
+
+p {
+    color: sandybrown;
+    font-size: 80px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 100px;
+    float: left;
+    padding: 190px 0px 0px 30px;
+}
+
+.bus {
+    background-image: url("school_bus.png");
+    width: 900px; 
+    height: 650px; 
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+.bus:active {
+    background-image: url("school_bus_small.png");
+    width: 730px;
+    height: 550px;
+}
+
+h1 {
+    color: burlywood
+}

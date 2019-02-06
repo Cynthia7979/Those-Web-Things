@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<head>
+<title>CLICK!</title>
+<script>
+var count=0
+var hundred=0
+function plusOne(){
+    count++
+    document.getElementById("h1-1").innerHTML = count
+    if (count % 10 == 0){
+        document.getElementById("h1-1").style = "color:red;"
+    }else{
+        document.getElementById("h1-1").style = "color:black;"
+    }
+
+    if (count==100){
+        hundred++
+        if (hundred==1){
+            document.write('<h1 style="size=larger"><u><b>OFFLINE CLICKER!!!</b></u></h1>\n<h1 id="h1-1">0</h1>\n<h1 id="h1-2" style="color:blue;">1 hundred</h1>\n<button onclick=plusOne()>+</button>')
+            alert("You achieved a hundred!")
+        }
+        document.getElementById("h1-2").innerHTML = hundred + 'hundred'
+        count = 0
+    }
+}
+</script>
+</head>
+<body>
+<h1 style="size=larger"><u><b>OFFLINE CLICKER!!!</b></u></h1>
+<h1 id="h1-1">0</h1>
+<script>
+alert('YOUR COMPUTER IS DAMAGED!!!\nHaha its fake\nPress OK to continue')
+</script>
+<button onclick=plusOne()>+</button>
+</body>

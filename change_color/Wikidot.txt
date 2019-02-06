@@ -1,0 +1,28 @@
+﻿！此部分放置于页面上方
+[[module CSS]]
+p {font-family: Verdana, Geneva, Tahoma, sans-serif;}
+
+.textBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 50%;
+    font-size: 100%;
+}
+
+.textBtn:focus {outline:none;}
+[[/module]]
+
+[[html]]
+<script>
+	function change() {
+    	document.getElementById("change").style = "color: red;" // 可以将red改为其他颜色
+	}
+</script>
+
+<p>不需要变色的文字<button class="textBtn" onclick=change() id="change">需要变色的文字</button></p>
+[[/html]]

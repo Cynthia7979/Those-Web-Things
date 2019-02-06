@@ -1,0 +1,58 @@
+body{
+    background-image: url(https://www.maxpixel.net/static/photo/2x/Embellish-Christmas-Tree-Ornament-Christmas-1812726.png);
+    background-repeat: repeat;
+    background-size: 280px;
+    background-color: wheat;
+    padding-top: 90px;
+}
+
+p{
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+img{
+    width: 300px;
+    display: block;
+}
+
+button{
+    background-color: transparent;
+    border: none;
+    padding: 14px 28px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 550;
+    font-family: Parchment Regular, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, SimSun;
+    color: rgb(97, 26, 26);
+    font-size: 100px;
+}
+
+button:hover{
+    background-color:rgba(202, 147, 76, 0.65);
+    padding: 16px 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 1em 0.5em rgba(202, 147, 76, 0.7);
+}
+
+button:focus{
+    outline:none;
+    background-color: rgba(168, 122, 62, 0.678);
+    box-shadow: 0 0 1em 0.5em rgba(168, 122, 62, 0.7);
+}
+
+.inline{
+    font-weight: 400;
+    font-size: 300%;
+}
+.show{
+    display: block;
+    font-family: Parchment Regular, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, SimSun;
+    color: rgb(97, 26, 26);
+}
+
+.hide{
+    display: none;
+    font-family: Parchment Regular, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, SimSun;
+    color: rgb(97, 26, 26);
+}
