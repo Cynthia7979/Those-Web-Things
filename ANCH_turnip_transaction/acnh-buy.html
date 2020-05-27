@@ -1,0 +1,63 @@
+<head>
+<style>
+html, body, .background {
+    margin: 0;
+    background-color: #c2c689;
+    background-image: radial-gradient(#d3d18a 18%, transparent 0), radial-gradient(#d3d18a 18%, transparent 0);
+    background-position: 0 0, 1rem 1rem;
+    background-size: 2rem 2rem;
+    color: #42332D;
+    font-family: Arial, sans-serif;
+    padding: 30px;
+}
+.name {
+    display: block;
+    font-size: 1.2em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    margin: 0;
+    position: absolute;
+    transform: translate(1rem, -1.2rem) rotate(-6deg);
+    width: fit-content;
+    padding: 0.3rem 1rem;
+    margin-bottom: 0.2rem;
+    border-radius: 1rem;
+    background-color: #ffad50;
+    color: white;
+}
+section {
+    width: 80%;
+    min-width: 17rem;
+    max-width: 55rem;
+    padding: 1.2rem;
+    margin: auto;
+    margin-bottom: 2.5rem;
+    border-radius: 2rem;
+    background-color: #fffde3;
+    display: block;
+    font-weight: bold;
+}
+</style>
+</head>
+<script>
+const Http = new XMLHttpRequest();
+const url='https://www.random.org/integers/?num=1&min=90&max=110&col=5&base=10&format=plain&rnd=new';
+Http.open("GET", url);
+Http.send();
+
+Http.onreadystatechange = (e) => {
+  document.getElementById("buyCost").innerHTML=Http.responseText;
+}
+</script>
+<body>
+  <div class="background">
+    <div>               </div>
+    <div>               </div>
+    <div>               </div>
+    <div class="name">曹卖</div>
+    <section>一颗大头菜<span id="buyCost"></span>铃钱，要买几棵？</section>
+  </div>
+</body>
