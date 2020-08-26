@@ -1,0 +1,136 @@
+<html>
+	<head>
+		<title>C A L C U L A T O R</title>
+		<script>
+			var a, b;
+			var cache = "";
+			var flashing = 0;
+			
+			function calculate(a,b,operation){
+				switch(operation) {
+					case "+": return a+b;
+					case "-": return a-b;
+					case "*": return a*b;
+					case "/": return a/b;
+				};
+			};
+			
+			function switchOperator(current){
+				var element = document.getElementById('operator');
+				var currentOperator = element.innerHTML;
+				switch(currentOperator) {
+					case "+": element.innerHTML = '-'; break;
+					case "-": element.innerHTML = '*'; break;
+					case "*": element.innerHTML = '/'; break;
+					case "/": element.innerHTML = '+'; break;
+				};
+			};
+			
+			function onEnter(){
+				var resultElement = document.getElementById('result');
+				var operation = document.getElementById('operator').innerHTML;
+				if (a && b) {
+					resultElement.innerHTML = a + operation + b + '=' + calculate(parseInt(a),parseInt(b),operation);
+					cache = "";
+					a = "";
+					b = "";
+				} else if (a && cache) {
+					b = cache;
+					resultElement.innerHTML = a + operation + b;
+					cache = "";
+				} else if (cache) {
+					a = cache;
+					resultElement.innerHTML = a + operation;
+					cache = "";
+				};
+			};
+			
+			function onNumber(number){
+				if (cache.length >= 10) {
+					if (!flashing){flashing = 1;}
+					return;
+				};
+				if (cache) {
+					var newResult = cache + number;
+					document.getElementById('result').innerHTML = newResult;
+					cache = cache + number;
+				} else {
+					document.getElementById('result').innerHTML = number;
+					cache = "" + number;
+				};
+			};
+			
+			function onBackspace() {
+				if (cache) {
+					cache = cache.slice(0,-1);
+					document.getElementById('result').innerHTML = cache;
+				};
+			};
+			
+			function loaded(){
+				document.getElementById('operator').onclick = switchOperator;
+				document.getElementById('enter').onclick = onEnter;
+				document.getElementById('backspace').onclick = onBackspace;
+				var numberElements = document.getElementsByClassName('number');
+				for (i=0;i<numberElements.length;i++) {
+					numberElements[i].onclick = function () {
+						onNumber(parseInt(this.innerHTML));
+					};
+				};
+				setInterval(flash,200);  
+			};
+			
+			function flash() {
+				if (flashing) {
+					switch (flashing % 2) {
+						case 1: document.getElementById("result").style.color = "#f00"; break;
+						case 0: document.getElementById("result").style.color = "#000"; break;
+					};
+					flashing++;
+				} if (flashing==5) {
+					flashing = 0;
+				};
+			};
+
+			window.onload = loaded;
+		</script>
+		<style>
+			#calculator {
+				margin: 0em 10em;
+			}
+			
+			button {
+				width: 50px;
+				height: 50px;
+				margin: 3px;
+				font-size: 25px;
+			}
+			
+			#result {
+				font-size: 2em;
+				margin: 45px 0px 20px 0px;
+				min-height: 2em;
+			}
+			
+			.hide {
+				display: none;
+			}
+			
+			#backspace {
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>A CALCULATOR</h1>
+			<div id="calculator">
+				<div id="result"></div>
+				<button id="backspace">←</button><br>
+				<button class="number">1</button><button class="number">2</button><button class="number">3</button><br>
+				<button class="number">4</button><button class="number">5</button><button class="number">6</button><br>
+				<button class="number">7</button class="number"><button class="number">8</button><button class="number">9</button><br>
+				<button id="operator">+</button class="number"><button class="number">0</button><button id="enter">√</button><br>
+			</div>
+		</center>
+	</body>
+</html>
