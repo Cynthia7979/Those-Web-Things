@@ -11,7 +11,7 @@ function calculate(a,b,operation){
     };
 };
 
-function switchOperator(current){
+function switchOperator(){
     var operatorButton = document.getElementById('operator');
     var currentOperator = operatorButton.innerHTML;
     function changeResultFieldOperator(operation) {
