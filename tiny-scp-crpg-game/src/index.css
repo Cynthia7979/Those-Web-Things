@@ -1,0 +1,34 @@
+.container {
+    width: 100%
+}
+
+.scroll-box {
+    height: 32em;
+    overflow-y: scroll;
+    /* border: 1px solid black; */
+    padding: 1em;
+}
+
+#text-field {
+    height: 3em;
+    min-width: 100%;
+    background-color: black;
+    color: white;
+    margin: 1em 0em;
+    font-size: 18px;
+}
+
+.highlighted-line {
+    color: white;
+}
+
+p.line, p.highlighted-line {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+body {
+    background-color: black;
+    color: #c7c7c7;
+    font-size: 18px;
+}
