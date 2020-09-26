@@ -53,7 +53,7 @@ class ScrollBox extends React.Component {
         } else {
             return (
                 <div className="scroll-box" />
-            );
+            )
         }
     }
 }
@@ -81,26 +81,26 @@ class Game extends React.Component {
             record: this.state.record.concat(this.state.newRecord),
             newRecord: lines
         })
-        console.log(lines, this.state.record, this.state.newRecord)
+        console.log(lines, this.state.record, this.state.newRecord);
     }
 
     setProgress(newProgess) {
-        const progress = this.state.progress
-        this.setState({progress: Object.assign({}, progress, newProgess)})  // Update progress
+        const progress = this.state.progress;
+        this.setState({progress: Object.assign({}, progress, newProgess)});  // Update progress
     }
 
     onKeyUpEvent(event) {
         console.log(this, event)
         if (event.key === 'Enter'){
-            this.setProgress({enterPressed: true})
+            this.setProgress({enterPressed: true});
         } else {
-            console.log('nope')
+            console.log('nope');
         }
     }
 
     startNewProgress(name) {
-        const textField = document.getElementById('text-field')
-        textField.value = ''
+        const textField = document.getElementById('text-field');
+        textField.value = '';
         this.setProgress({
             name: name,
             enterPressed: false
@@ -109,8 +109,8 @@ class Game extends React.Component {
 
     play() {
         // console.log(this.state.progress)
-        const textField = document.getElementById('text-field')
-        const progress = this.state.progress
+        const textField = document.getElementById('text-field');
+        const progress = this.state.progress;
         switch (progress.name) {
             case (null):  // Start of story
                 this.addRecord([
@@ -119,7 +119,7 @@ class Game extends React.Component {
                     'You rubbed your eyes and got the ID card from your bedroom desk.', 
                     '(Press Enter to Read)'
                 ])
-                this.startNewProgress('enterToRead')
+                this.startNewProgress('enterToRead');
                 break;
 
             case ('enterToRead'):
@@ -131,7 +131,7 @@ class Game extends React.Component {
                         'That\'s strange. What was your name again? (Enter using keyboard)'
                     ])
 
-                    this.startNewProgress('enterPlayerName')
+                    this.startNewProgress('enterPlayerName');
                 }
                 break;
 
@@ -140,7 +140,7 @@ class Game extends React.Component {
                     this.setState({
                         playerName: textField.value.replace(/^\w/, c => c.toUpperCase())  // Capitalize first letter
                     })
-                    this.startNewProgress('intro')
+                    this.startNewProgress('intro');
                 }
                 break;
 
@@ -156,7 +156,7 @@ class Game extends React.Component {
                     'You nodded; this looks right. Now, time to get some breakfast.',
                     '(Press Enter to go to cafeteria)'
                 ])
-                this.startNewProgress('enterToGoToCafeteria')
+                this.startNewProgress('enterToGoToCafeteria');
                 break;
 
             case ('enterToGoToCafeteria'):
@@ -168,7 +168,7 @@ class Game extends React.Component {
                         '2. Not actually...',
                         '(Enter using keyboard)'
                     ])
-                    this.startNewProgress('chooseEat')
+                    this.startNewProgress('chooseEat');
                 }
                 break;
 
@@ -180,20 +180,20 @@ class Game extends React.Component {
                             this.addRecord([
                                 '"Here," the staff handed you a plate containing a bacon-egg hamburger.',
                                 'You took the plate and found a place to sit.'
-                            ]);
-                            this.startNewProgress('finishEating')
+                            ])
+                            this.startNewProgress('finishEating');
                             break;
                         case ('2'): 
                             this.addRecord([
                                 'The staff looked up at you, "Oh? What do you want instead?"',
                                 '1. Enter food name (1d10 > INT)',
                                 '2. "Nah, just bacon and egg please."'
-                            ]);
+                            ])
                             this.startNewProgress('chooseElseFood');
                             break;
                         default:
                             this.addRecord(['[Please enter a valid choice]',''])
-                            this.startNewProgress('chooseEat')
+                            this.startNewProgress('chooseEat');
                             break;
                     }
                 }
@@ -204,17 +204,29 @@ class Game extends React.Component {
                     const choice = textField.value;
                     switch (choice) {
                         case('1'):
-                            const dice = randomInteger(1,10)
-                            const success = dice>this.state.INT
+                            const dice = randomInteger(1,10);
+                            const success = dice<this.state.INT;
                             this.addRecord([
-                                '1d10='+dice+(success?' > ':' < ')+this.state.INT,
+                                '1d10='+dice+(success?' < ':' > ')+this.state.INT+(success? ' SUCCESS':' FAIL'),
                                 success?'(Enter anything you want)':
                                 'You nattered something inaudible. The staff sighed and turned to the next one in line.'
                             ])
                             if (success) {this.startNewProgress('enterCustomFood'); break}
                             else {
-                                ;
+                                this.startNewProgress('leaveCafe');
+                                break;
                             }
+                        case('2'):
+                            this.addRecord([
+                                'The staff looked at you strangely before handing you a tray with nasty-looking bacon-egg burger.',
+                                'You regretted for your actions, turned, and found a seat to sit.'
+                            ])
+                            this.startNewProgress('finishEating');
+                            break;
+                        default: 
+                            this.addRecord(['[Please enter a valid choice]',''])
+                            this.startNewProgress('chooseElseFood');
+                            break;
                     }
                 }
                 break;
@@ -225,8 +237,6 @@ class Game extends React.Component {
     start() {
         setInterval(() => this.play(), 1);
         setInterval(() => {console.log(this.state.progress)}, 10000);
-        var a = [];
-        if (!a) {alert('hi')}
     }
 
     render() {
